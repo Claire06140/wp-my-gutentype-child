@@ -1,0 +1,141 @@
+/*
+ Theme Name:   GutenType Child Theme
+ Theme URI:    http://gutentype.ancorathemes.com/
+ Description:  GutenType Child Theme
+ Author:       Claire Marchyllie
+ Author URI:   https://happy-diabetes.com/
+ Template:     gutentype
+ Version:      1.0
+ Tags:         flexible-header, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, full-width-template, microformats, post-formats, theme-options, threaded-comments, translation-ready
+ Text Domain:  gutentype
+*/
+
+
+/* =Theme customization starts here
+-------------------------------------------------------------- */
+/* Toutes les @font-face -  hébergées ici se trouvent dans les imports ci-dessous
+si besoin de revenir en arrière et re-télécharger les fonts google -> dans elementor frontend.php // 21 06 21 Pour arrêter telechargement google fonts externe => mis sur false remettre sur true si besoin $print_google_fonts =  false;		
+  */
+
+/* Test git commentaire depuis interface wp admin site local */
+/* 2e test git voir si ajout de cette ligne visible maintenant que file ajout´é*/
+
+@import "css/font-face/Barlow/stylesheet.css";
+@import "css/font-face/Lora/stylesheet.css";
+@import "css/font-face/Roboto/stylesheet.css";
+@import "css/font-face/Roboto-slab/stylesheet.css";
+	
+
+
+
+/*Agrandir le logo et lui donner max-height
+*/
+
+.custom-logo-link img,
+.sc_layouts_logo img,
+a.custom-logo-link img,
+.sc_layouts_row .sc_layouts_logo img {
+	max-height: 49px !important;
+    max-width: 170px !important;
+}
+
+.elementor-7393 .elementor-element.elementor-element-5d20703 .logo_image {
+    max-height: 44px !important;
+    height: 44px;
+    width: 57px;
+}
+
+/* THEME GENERAL COULEURS pour virer fichiers css lourds générés par theme */
+.scheme_default code a{
+	color: #e78d30;
+}
+
+.scheme_default code a:hover {
+	color: #f2873a;
+}
+
+.scheme_default a{
+	color: #f2873ab5;
+}
+
+.scheme_default a:hover {
+	color: #e78d30;
+}
+
+.scheme_default .color_style_link2 a {
+	color: #e78d30;
+}
+
+/* MENU DESKTOP COULEURS */ 
+.scheme_default .sc_layouts_menu_popup .sc_layouts_menu_nav, .scheme_default .sc_layouts_menu_nav>li ul {
+	background-color: #152035;
+}
+
+.scheme_default .sc_layouts_menu_popup .sc_layouts_menu_nav>li>a, .scheme_default .sc_layouts_menu_nav>li li>a {
+	color: #ffffff;
+}
+
+.scheme_default .sc_layouts_menu_popup .sc_layouts_menu_nav>li>a, .scheme_default .sc_layouts_menu_nav>li li>a:hover {
+	color: #f2873ab5;
+}
+
+#trx_sc_layouts_menu_1830520931 > a > span {
+	color: #232221;
+}
+
+
+/* STYLE MENU MOBILE */
+/* Rendre le reste de la page invisible */
+#container > div.menu_mobile.menu_mobile_fullscreen.opened > div {
+	background: white; 
+}
+
+/* Hamburger menu et petite croix noir/gris #232221 (orange par défaut) */
+/* #container > div.menu_mobile.menu_mobile_fullscreen.opened > div > a.menu_mobile_close.icon-cancel {
+*/
+ a.menu_mobile_close.icon-cancel, .sc_layouts_menu_mobile_button_burger > a
+{
+	color: #232221;
+}
+
+
+/* Liens du menu mobile */
+#menu_mobile > .menu-item > a {
+	color: #232221;
+}
+
+#menu_mobile > .menu-item > a:hover {
+	color: #f2873ab5;
+}
+
+/* Dropdown du menu mobile */
+/* #menu_mobile > li.menu-item.menu-item-has-children.opened > ul > li > a 
+*/
+#menu_mobile > .menu-item.menu-item-has-children.opened > ul > li > a {
+	color: #251d10b5;
+}
+
+#menu_mobile > .menu-item.menu-item-has-children.opened > ul > li > a:hover {
+	color: #f2873ab5;
+}
+
+/* Style citation fond orange écriture blanche */
+blockquote {
+	background: #ff8833db;
+	color: white;
+}
+
+/* Légende images */
+figcaption.widget-image-caption.wp-caption-text {
+    background: #ffffffd6;
+}
+
+.sc_blogger_item_content.entry-content > div > h5 > a {
+	color: #152035d9;
+}
+
+/* Mail chimp subscribe popup centrer texte (pas centré sur mobile) */
+/* NE MARCHE PAS -> trouver pourquoi? 19 06*/
+.bannerContent__description {
+    text-align: center;
+}
