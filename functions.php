@@ -4,10 +4,86 @@
  */
 
 
+
 function my_theme_enqueue_styles() {
     wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
 }
 add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
+
+
+
+
+//if ( ! function_exists( 'gutentype_customizer_theme_setup1' ) ) {
+  add_filter( 'after_setup_theme', 'gutentype_customizer_theme_setup1', 1 );
+// add_filter( 'after_setup_theme', 'gutentype_customizer_theme_setup_child', 1 );
+
+  function gutentype_customizer_theme_setup1($arr) {
+
+    // -----------------------------------------------------------------
+    // -- ONLY FOR PROGRAMMERS, NOT FOR CUSTOMER
+    // -- Internal theme settings
+    // -----------------------------------------------------------------
+    $arr = array();
+    gutentype_storage_set(
+     'settings', array(
+
+        'duplicate_options'      => 'child',            // none  - use separate options for the main and the child-theme
+                                // child - duplicate theme options from the main theme to the child-theme only
+                                // both  - sinchronize changes in the theme options between main and child themes
+
+        'customize_refresh'      => 'auto',             // Refresh method for preview area in the Appearance - Customize:
+                                // auto - refresh preview area on change each field with Theme Options
+                                // manual - refresh only obn press button 'Refresh' at the top of Customize frame
+
+        'max_load_fonts'         => 5,                  // Max fonts number to load from Google fonts or from uploaded fonts
+
+        'comment_after_name'     => true,               // Place 'comment' field after the 'name' and 'email'
+
+        'icons_selector'         => 'internal',         // Icons selector in the shortcodes:
+                                // vc (default) - standard VC (very slow) or Elementor's icons selector (not support images and svg)
+                                // internal - internal popup with plugin's or theme's icons list (fast and support images and svg)
+
+        'icons_type'             => 'icons',            // Type of icons (if 'icons_selector' is 'internal'):
+                                // icons  - use font icons to present icons
+                                // images - use images from theme's folder trx_addons/css/icons.png
+                                // svg    - use svg from theme's folder trx_addons/css/icons.svg
+
+        'socials_type'           => 'icons',            // Type of socials icons (if 'icons_selector' is 'internal'):
+                                // icons  - use font icons to present social networks
+                                // images - use images from theme's folder trx_addons/css/icons.png
+                                // svg    - use svg from theme's folder trx_addons/css/icons.svg
+
+        'check_min_version'      => true,               // Check if exists a .min version of .css and .js and return path to it
+                                // instead the path to the original file
+                                // (if debug_mode is off and modification time of the original file < time of the .min file)
+
+        'autoselect_menu'        => false,              // Show any menu if no menu selected in the location 'main_menu'
+                                // (for example, the theme is just activated)
+
+        'disable_jquery_ui'      => false,              // Prevent loading custom jQuery UI libraries in the third-party plugins
+
+        'use_mediaelements'      => false,               // Load script "Media Elements" to play video and audio
+
+        'tgmpa_upload'           => false,              // Allow upload not pre-packaged plugins via TGMPA
+
+        'allow_no_image'         => false,              // Allow use image placeholder if no image present in the blog, related posts, post navigation, etc.
+// set to false 26 06 21 pour voir si fonctionne
+        'separate_schemes'       => false,               // Save color schemes to the separate files __color_xxx.css (true) or append its to the __custom.css (false)
+
+        'allow_fullscreen'       => false,              // Allow cases 'fullscreen' and 'fullwide' for the body style in the Theme Options
+                                // In the Page Options this styles are present always
+                                // (can be removed if filter 'gutentype_filter_allow_fullscreen' return false)
+
+        'attachments_navigation' => false,              // Add arrows on the single attachment page to navigate to the prev/next attachment
+
+        'gutenberg_add_context'  => true,              // Add context to the Gutenberg editor styles with our method (if true - use if any problem with editor styles) or use native Gutenberg way via add_editor_style() (if false - used by default)
+
+        'gutenberg_safe_mode'    => array('elementor'), // vc,elementor - Prevent simultaneous editing of posts for Gutenberg and other PageBuilders (VC, Elementor)
+       )
+    );
+  return $arr;
+}
+
 
 
 function deregister_styles_mediaelement() {
@@ -17,7 +93,7 @@ function deregister_styles_mediaelement() {
 //	wp_deregister_script('wpmediaelement');
 }
 //add_action('wp_enqueue_scripts', 'dequeue_scripts_styles_mediaelement');
-add_action('after_setup_theme', 'deregister_styles_mediaelement');
+//add_action('after_setup_theme', 'deregister_styles_mediaelement');
 
 function deregister_scripts_mediaelement() {
 //	wp_deregister_style('mediaelement');
@@ -25,7 +101,7 @@ function deregister_scripts_mediaelement() {
 	wp_deregister_script('mediaelement');
 	wp_deregister_script('wpmediaelement');
 }
-add_action('wp_enqueue_scripts', 'deregister_scripts_mediaelement');
+//add_action('wp_enqueue_scripts', 'deregister_scripts_mediaelement');
 //add_action('after_setup_theme', 'dequeue_scripts_styles_mediaelement');
 
 
